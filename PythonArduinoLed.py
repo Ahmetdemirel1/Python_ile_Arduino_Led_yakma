@@ -2,20 +2,29 @@ import serial
 import time
 
 
-arduino = serial.Serial('COM4', 9600)
+arduino = serial.Serial('COM3', 9600)
 
 def on_off_fun():
-	option = input('Ledi yakmak icin On kapatmak icin Off seceneklerini kullan')
+	option = input('Ledi yakmak icin on kapatmak icin Off seceneklerini kullan')
 
-	if option == 'On':
+	if option == 'on':
 		print ("Led Suan yaniyor...")
 		time.sleep(1)
-		arduino.write('LedOn')
+		arduino.write('0'.encode('utf-8'))
 		on_off_fun()
 
-	elif option == ' Off':
+	if option == 'off':
 		print('Led Suan yanmiyor...')
-		arduino.write('LedOff')
+		time.sleep(1)
+		arduino.write('1'.encode('ascii'))
+
+		on_off_fun()
+
+	if option == 'ahmet':
+		print('Led Suan yanmiyor...')
+		time.sleep(1)
+		arduino.write('10'.encode('ascii'))
+
 		on_off_fun()
 
 	else:

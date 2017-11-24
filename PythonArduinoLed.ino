@@ -1,5 +1,5 @@
-int LEDpin1 = 5;
 
+int LEDpin1 = 5;
 
 void setup() {
   pinMode(LEDpin1, OUTPUT);
@@ -7,13 +7,19 @@ void setup() {
 }
 
 void loop() {
-  if (Serial.available()){
+  
+  
+  if (Serial.available() > 0) {
     char serialListener = Serial.read();
-    if (serialListener = 'LedOn'){
+    if (serialListener == '0') {
       digitalWrite(LEDpin1, HIGH);
     }
-    else if (serialListener = 'LedOff'){
+    else if (serialListener == '1') {
       digitalWrite(LEDpin1, LOW);
-    }              
+    }
+    else if (serialListener == '10') {
+      digitalWrite(LEDpin1, HIGH);
+    }
   }
 }
+
