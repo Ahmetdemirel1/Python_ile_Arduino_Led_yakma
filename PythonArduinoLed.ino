@@ -11,14 +11,13 @@ void loop() {
   
   if (Serial.available() > 0) {
     char serialListener = Serial.read();
-    if (serialListener == '0') {
+    if (serialListener == '1') {
       digitalWrite(LEDpin1, HIGH);
     }
-    else if (serialListener == '1') {
+    else if (serialListener == '0') {
       digitalWrite(LEDpin1, LOW);
     }
-    else if (serialListener == '10') {
-      digitalWrite(LEDpin1, HIGH);
+
     }
   }
 }
